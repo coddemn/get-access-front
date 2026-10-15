@@ -7,7 +7,6 @@ const mockData = [
 
 const tableBody   = document.getElementById('tableBody');
 const searchInput  = document.getElementById('globalSearch');
-const sidebar      = document.getElementById('sidebar');
 
 // ---- Вспомогательные функции ----
 
@@ -218,18 +217,6 @@ function deleteRow(id, element) {
     showToast('Запись удалена');
 }
 
-// ---- Сайдбар и выход ----
-
-function toggleSidebar() {
-    sidebar.classList.toggle('collapsed');
-}
-
-function logout() {
-    if (confirm('Вы действительно хотите выйти?')) {
-        localStorage.removeItem('access_token');
-        window.location.href = '../login/login.html';
-    }
-}
 
 // ---- Старт ----
 renderTable(mockData);

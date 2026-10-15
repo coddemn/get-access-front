@@ -1,11 +1,3 @@
-// Проверка авторизации (мок)
-(function() {
-    const token = localStorage.getItem('access_token');
-    if (!token) {
-        window.location.href = 'login.html';
-    }
-})();
-
 function togglePassVisibility() {
     const input = document.getElementById('password');
     const btn = document.getElementById('togglePassBtn');

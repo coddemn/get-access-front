@@ -1,10 +1,3 @@
-(function() {
-    var token = localStorage.getItem('access_token');
-    if (!token) {
-        window.location.href = 'login.html';
-    }
-})();
-
 var userData = {
     username: 'Иван Иванов',
     login: 'ivan_dev',

@@ -5,21 +5,6 @@
     <title>Менеджер паролей</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="manager.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Проверяем наличие токена (например, в localStorage или cookie)
-            const token = localStorage.getItem('access_token'); 
-            
-            if (!token) {
-                // Если токена нет, сразу кидаем на логин
-                window.location.href = '../login/login.html';
-                return;
-            }
-
-            // ВАЖНО: Это только для удобства пользователя. 
-            // Реальную проверку токена должен делать сервер при запросе данных.
-        });
-    </script>
 </head>
 <body>
     <aside class="sidebar" id="sidebar">
@@ -60,6 +45,7 @@
         </div>
     </main>
 
+    <script src="../scripts.js"></script>
     <script src="manager.js"></script>
 </body>
 </html>
