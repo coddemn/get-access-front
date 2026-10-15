@@ -1,0 +1,131 @@
+.page-title {
+    font-size: 22px;
+    color: var(--accent);
+    margin: 0;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+/* Центрирование и небольшой подъём формы */
+.add-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;       /* по горизонтали */
+    padding: 20px 15px;            /* отступ сверху/снизу — можно менять */
+    box-sizing: border-box;
+}
+
+.add-form-frame {
+    width: 100%;
+    max-width: 600px;
+    min-height: auto;
+    font-size: 16px;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 15px;
+    color: var(--text-gray);
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(193, 193, 193, 0.3);
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+.form-input::placeholder {
+    color: rgba(193, 193, 193, 0.4);
+}
+
+.form-textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.password-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.password-row .form-input {
+    flex-grow: 1;
+}
+
+.toggle-pass-btn,
+.gen-pass-btn {
+    background: var(--bg-dark);
+    border: 1px solid rgba(193, 193, 193, 0.3);
+    color: var(--accent);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 14px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.toggle-pass-btn:hover,
+.gen-pass-btn:hover {
+    border-color: var(--accent);
+    background: rgba(95, 158, 160, 0.15);
+}
+
+.toggle-pass-btn.active {
+    border-color: var(--accent);
+    background: rgba(95, 158, 160, 0.15);
+    color: #242424;
+    transform: scale(1.05);
+}
+.toggle-pass-btn.active:hover {
+    transform: scale(1.05);
+    background: rgba(95, 158, 160, 0.15);
+    border-color: var(--accent);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.save-form-btn {
+    color: white;
+    background-color: var(--success);
+    border-color: var(--success);
+    width: auto;
+    padding: 0 25px;
+}
+.save-form-btn:hover:not(:disabled) {
+    color: white;
+    background-color: #43a047;
+    border-color: #43a047;
+}
+
+.cancel-form-btn {
+    width: auto;
+    padding: 0 25px;
+}

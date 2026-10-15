@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль — Менеджер паролей</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../manager/manager.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">Менеджер</div>
+        <nav class="nav-menu">
+            <button class="nav-item" onclick="window.location.href='../manager/manager.html'">Мои Сервисы</button>
+            <button class="nav-item active" onclick="window.location.href='profile.html'">Профиль</button>
+        </nav>
+        <button class="logout-btn" onclick="logout()">Выйти из аккаунта</button>
+    </aside>
+
+    <main class="main-content">
+        <div class="top-bar">
+            <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
+            <h1 class="page-title">Профиль</h1>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Карточка данных пользователя -->
+            <div class="Frame1 profile-card">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-info" id="profileInfo">
+                    <div class="profile-row">
+                        <span class="profile-label">Имя пользователя</span>
+                        <span class="profile-value view-mode" id="username">Иван Иванов</span>
+                        <input type="text" class="profile-input edit-mode" id="usernameInput" style="display:none;">
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Логин</span>
+                        <span class="profile-value view-mode" id="userLogin">ivan_dev</span>
+                        <input type="text" class="profile-input edit-mode" id="loginInput" style="display:none;">
+                    </div>
+                    <div class="profile-row">
+                        <span class="profile-label">Пароль</span>
+                        <span class="profile-value password-dots view-mode">••••••••</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="button link-btn view-mode" onclick="startEditProfile()">Редактировать</button>
+                    <button class="button save-form-btn edit-mode" onclick="saveProfile()" style="display:none;">Сохранить</button>
+                    <button class="button cancel-form-btn edit-mode" onclick="cancelEditProfile()" style="display:none;">Отмена</button>
+                    <button class="button change-pass-btn" onclick="openPassModal()">Изменить пароль</button>
+                </div>
+            </div>
+
+            <!-- Карточка привязки соцсетей -->
+            <div class="Frame1 profile-card">
+                <h2 class="card-title">Привязанные аккаунты</h2>
+
+                <div class="link-row" id="emailRow">
+                    <div class="link-info">
+                        <span class="link-icon">✉️</span>
+                        <div class="link-text">
+                            <span class="link-name">Email</span>
+                            <span class="link-status" id="emailStatus">Не привязан</span>
+                        </div>
+                    </div>
+                    <button class="button link-btn" onclick="openEmailModal()">Привязать</button>
+                </div>
+
+                <div class="link-row" id="vkRow">
+                    <div class="link-info">
+                        <span class="link-icon vk-icon">VK</span>
+                        <div class="link-text">
+                            <span class="link-name">ВКонтакте</span>
+                            <span class="link-status" id="vkStatus">Не привязан</span>
+                        </div>
+                    </div>
+                    <button class="button link-btn" onclick="linkVK()">Привязать</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно привязки email -->
+    <div id="emailModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="modal-title">Привязка email</h3>
+            <p class="modal-desc">Введите почту — на неё будет отправлено письмо с подтверждением.</p>
+            <input type="email" id="emailInput" class="form-input" placeholder="example@mail.ru">
+            <div class="modal-actions">
+                <button class="button cancel-form-btn" onclick="closeEmailModal()">Отмена</button>
+                <button class="button save-form-btn" onclick="sendEmailConfirm()">Отправить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно смены пароля -->
+    <div id="passModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="modal-title">Изменение пароля</h3>
+            <div class="form-group">
+                <label class="modal-label">Текущий пароль</label>
+                <input type="password" id="oldPass" class="form-input" placeholder="Введите текущий пароль">
+            </div>
+            <div class="form-group">
+                <label class="modal-label">Новый пароль</label>
+                <input type="password" id="newPass" class="form-input" placeholder="Введите новый пароль">
+            </div>
+            <div class="form-group">
+                <label class="modal-label">Подтвердите пароль</label>
+                <input type="password" id="confirmPass" class="form-input" placeholder="Повторите новый пароль">
+            </div>
+            <div class="modal-actions">
+                <button class="button cancel-form-btn" onclick="closePassModal()">Отмена</button>
+                <button class="button save-form-btn" onclick="changePassword()">Изменить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../manager/manager.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

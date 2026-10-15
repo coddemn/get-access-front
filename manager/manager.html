@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Менеджер паролей</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="manager.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Проверяем наличие токена (например, в localStorage или cookie)
+            const token = localStorage.getItem('access_token'); 
+            
+            if (!token) {
+                // Если токена нет, сразу кидаем на логин
+                window.location.href = '../login/login.html';
+                return;
+            }
+
+            // ВАЖНО: Это только для удобства пользователя. 
+            // Реальную проверку токена должен делать сервер при запросе данных.
+        });
+    </script>
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">Менеджер</div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="window.location.href='manager.html'">Мои Сервисы</button>
+            <button class="nav-item" onclick="window.location.href='../profile/profile.html'">Профиль</button>
+        </nav>
+        <button class="logout-btn" onclick="logout()">Выйти из аккаунта</button>
+    </aside>
+
+    <main class="main-content">
+        <div class="top-bar">
+            <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
+            <div class="search-container">
+                <input type="text" id="globalSearch" class="search-input"
+                       placeholder="Поиск по названию или логину..."
+                       oninput="filterTable()">
+            </div>
+            <button class="add-btn" onclick="window.location.href='../adding/adding.html'">Добавить запись</button>
+        </div>
+
+        <div class="data-frame">
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Имя сервиса</th>
+                        <th>Логин</th>
+                        <th>Пароль</th>
+                        <th>Ссылка</th>
+                        <th>Описание</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="manager.js"></script>
+</body>
+</html>

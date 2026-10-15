@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Войти в манагер</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group label {
+            font-size: 16px;
+            color: #C1C1C1;
+        }
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(193, 193, 193, 0.3);
+            background-color: #333;
+            color: white;
+            font-family: "Comic Sans MS", sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: cadetblue;
+        }
+        .auth-actions {
+            /* display: flex; */
+            /* justify-content: space-between;
+            align-items: center; */
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .auth-actions a {
+            color: cadetblue;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .auth-actions a:hover {
+            color: aquamarine;
+        }
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            font-family: "Comic Sans MS", sans-serif;
+            transition: transform 0.2s;
+        }
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+        .social-btn.vk { background-color: #0077FF; }
+        .social-btn.email { background-color: #FF9F43; }
+        .toggle-form {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #C1C1C1;
+        }
+        .toggle-form a {
+            color: cadetblue;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .toggle-form a:hover {
+            color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="Frame1" id="authFrame">
+        <h2 style="text-align: center; margin-top: 0;">Вход в менеджер</h2>
+        <form class="auth-form" id="loginForm">
+            <div class="form-group">
+                <label for="login">Логин</label>
+                <input type="text" id="login" class="input-field" required placeholder="Введите логин">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" class="input-field" required placeholder="Введите пароль">
+            </div>
+            <button type="submit" class="button" style="width: auto;">Войти</button>
+            <div class="auth-actions">
+                <a href="#" id="toggleRegister">Нет аккаунта? Зарегистрироваться</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="Frame1" id="registerFrame" style="display: none;">
+        <h2 style="text-align: center; margin-top: 0;">Регистрация</h2>
+        <form class="auth-form" id="registerForm">
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" class="input-field" required placeholder="Придумайте имя">
+            </div>
+            <div class="form-group">
+                <label for="regLogin">Логин</label>
+                <input type="text" id="regLogin" class="input-field" required placeholder="Придумайте логин">
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Пароль</label>
+                <input type="password" id="regPassword" class="input-field" required placeholder="Придумайте пароль">
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Повторите пароль</label>
+                <input type="password" id="repPassword" class="input-field" required placeholder="Повторите пароль">
+            </div>
+            <div class="form-group">
+                <label for="email">Email (необязательно)</label>
+                <input type="email" id="email" class="input-field" placeholder="example@mail.ru">
+            </div>
+            <div class="social-links">
+                <button type="button" class="social-btn vk" title="Войти через VK">VK</button>
+                <button type="button" class="social-btn email" title="Привязать Email">✉</button>
+            </div>
+            <button type="submit" class="button" style="width: auto;">Зарегистрироваться</button>
+            <div class="toggle-form">
+                <a href="#" id="toggleLogin">Уже есть аккаунт? Войти</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const loginFrame = document.getElementById('authFrame');
+        const registerFrame = document.getElementById('registerFrame');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const toggleRegister = document.getElementById('toggleRegister');
+        const toggleLogin = document.getElementById('toggleLogin');
+
+        toggleRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginFrame.style.display = 'none';
+            registerFrame.style.display = 'flex';
+        });
+
+        toggleLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerFrame.style.display = 'none';
+            loginFrame.style.display = 'flex';
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const loginVal = document.getElementById('login').value.trim();
+            const passVal = document.getElementById('password').value.trim();
+            
+            if (loginVal === 'admin' && passVal === '12345') {
+                localStorage.setItem('access_token', 'fake_jwt_token_123');
+                window.location.href = '../manager/manager.html';
+            } else {
+                alert('Неверный логин или пароль');
+            }
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const regLogin = document.getElementById('regLogin').value.trim();
+            const regPass = document.getElementById('regPassword').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (username && regLogin && regPass) {
+                alert('Регистрация успешна! Теперь войдите в систему.');
+                registerFrame.style.display = 'none';
+                loginFrame.style.display = 'flex';
+                document.getElementById('login').value = regLogin;
+            } else {
+                alert('Заполните обязательные поля');
+            }
+        });
+    </script>
+</body>
+</html>

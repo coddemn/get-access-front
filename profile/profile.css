@@ -1,0 +1,266 @@
+.page-title {
+    font-size: 22px;
+    color: var(--accent);
+    margin: 0;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.profile-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 450px;
+    min-height: auto;
+    margin: 0;
+    font-size: 16px;
+    align-items: stretch;
+}
+
+.profile-avatar {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.profile-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.profile-label {
+    color: var(--text-gray);
+    font-size: 14px;
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+.profile-value {
+    color: white;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.profile-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(193, 193, 193, 0.3);
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.profile-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.card-title {
+    font-size: 18px;
+    color: var(--accent);
+    margin: 0 0 20px 0;
+}
+
+.link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+.link-row:last-child {
+    border-bottom: none;
+}
+
+.link-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.link-icon {
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(95, 158, 160, 0.15);
+}
+
+.vk-icon {
+    background: #0077FF;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.link-name {
+    color: white;
+    font-size: 15px;
+}
+
+.link-status {
+    color: var(--text-gray);
+    font-size: 13px;
+}
+
+.link-status.linked {
+    color: var(--success);
+}
+
+.link-btn {
+    width: auto;
+    padding: 0 18px;
+    font-size: 14px;
+}
+
+.link-btn.linked {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+.link-btn.linked:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.change-pass-btn {
+    color: #ff9f43;
+    border-color: #ff9f43;
+    width: auto;
+    padding: 0 18px;
+    font-size: 14px;
+}
+.change-pass-btn:hover {
+    color: var(--bg-dark);
+    background: #ff9f43;
+}
+
+/* Модальные окна */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--bg-dark);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-title {
+    color: var(--accent);
+    font-size: 20px;
+    margin: 0;
+}
+
+.modal-desc {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    line-height: 1.4;
+}
+
+.modal-label {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.modal-content .form-group {
+    margin-bottom: 5px;
+}
+
+.modal-content .form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(193, 193, 193, 0.3);
+    background-color: var(--frame-gray);
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.modal-content .form-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.save-form-btn {
+    color: white;
+    background-color: var(--success);
+    border-color: var(--success);
+    width: auto;
+    padding: 0 25px;
+}
+.save-form-btn:hover {
+    background-color: #43a047;
+    border-color: #43a047;
+}
+
+.cancel-form-btn {
+    width: auto;
+    padding: 0 25px;
+}
